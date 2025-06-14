@@ -7,9 +7,10 @@ class Game():
     def __init__(self):
         pygame.init()
         pygame.font.init()
+        self.load_asset()
         self.player = Player()
         self.field = Field()
-        self.battle = Field()
+        self.battle = Battle()
         self.shop = Shop()
 
         self.scene = 'title'
@@ -35,11 +36,32 @@ class Game():
                 pygame.quit()
                 sys.exit()
 
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse = pygame.mouse.get_pos()
+                button = event.button
+                if self.scene == 'title':
+                    scenetitle.mouse_up(self, mouse, button)
+                elif self.scene == 'game':
+                    scenegame.mouse_up(self, mouse, button)
+
+            if event.type == pygame.KEYDOWN:
+                key = event.key
+                if self.scene == 'title':
+                    scenetitle.key_down(self, key)
+                elif self.sceme == 'game':
+                    scenegame.key_down(self, key)
+
+            if event.type == pygame.KEYUP:
+                key = event.key
+                if self.scene == 'title':
+                    scenetitle.key_up(self, key)
+                elif self.sceme == 'game':
+                    scenegame.key_up(self, key)
+
     def handle_scene(self):
         if self.scene == 'title':
             scenetitle.loop(self)
-
-        if self.scene == 'game':
+        elif self.scene == 'game':
             scenegame.loop(self)
 
 Game().run()

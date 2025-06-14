@@ -1,0 +1,10 @@
+card = {}
+card_d = {}
+weapon = {}
+weapon_d = {}
+equipment = {}
+equipment_d = {}
+item = {}
+item_d = {}
+unit = {}
+unit_d = {}
