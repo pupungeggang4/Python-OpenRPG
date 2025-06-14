@@ -8,6 +8,8 @@ class Game():
         pygame.init()
         pygame.font.init()
         self.load_asset()
+        self.save = {}
+        load_save_data(self)
         self.player = Player()
         self.field = Field()
         self.battle = Battle()

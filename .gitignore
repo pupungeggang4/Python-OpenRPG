@@ -196,4 +196,5 @@ cython_debug/
 .DS_store
 *.png~
 *.swp
+save.txt
 Release/
