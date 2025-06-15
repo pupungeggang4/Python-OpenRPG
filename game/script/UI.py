@@ -9,10 +9,26 @@ class UI():
         text_erase = [184, 344]
 
     class Game():
-        pass
+        button_menu = [1180, 20, 80, 80]
 
     class Battle():
         pass
 
     class Info():
         pass
+
+    class Shop():
+        pass
+
+    class Reward():
+        pass
+
+    class Menu():
+        rect = [320, 200, 640, 320]
+        text_paused = [344, 224]
+        button_resume = [320, 280, 640, 80]
+        text_resume = [344, 304]
+        button_surrender = [320, 360, 640, 80]
+        text_surrender = [344, 384]
+        button_exit = [320, 440, 640, 80]
+        text_exit = [344, 464]

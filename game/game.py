@@ -17,9 +17,10 @@ class Game():
 
         self.scene = 'title'
         self.state = ''
+        self.menu = False
         self.FPS = 60
         self.clock = pygame.time.Clock()
-        self.surface = pygame.display.set_mode([1280, 720])
+        self.surface = pygame.display.set_mode([1280, 720], pygame.SCALED, vsync = 1)
         pygame.display.set_caption('Ceramic Card RPG')
 
     def load_asset(self):
