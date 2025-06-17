@@ -6,6 +6,7 @@ def loop(game):
 
 def render(game):
     game.surface.fill(Color.white)
+    game.field.render(game.surface)
     pygame.draw.rect(game.surface, Color.black, UI.Game.button_menu, 2)
 
     if game.menu == True:
