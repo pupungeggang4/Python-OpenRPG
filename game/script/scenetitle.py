@@ -21,6 +21,11 @@ def mouse_up(game, pos, button):
         if point_inside_rect_ui(pos, UI.Title.button_start):
             game.scene = 'game'
             game.state = ''
+            game.player.load_save(game.save)
+            game.field.load_save(game.save)
+
+        elif point_inside_rect_ui(pos, UI.Title.button_erase):
+            erase_save_data(game)
 
 def key_down(game, key):
     pass

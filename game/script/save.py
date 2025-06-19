@@ -1,9 +1,10 @@
 import json
 
 empty_save = {
-    'place': 'home_town',
-    'level': 1,
-    'exp': 0,
+    'position': [0, 0],
+    'player_level': 1,
+    'player_exp': 0,
+    'player_exp_max': 40,
     'card': [],
     'weapon': [],
     'equipment': [],
@@ -24,5 +25,15 @@ def load_save_data(game):
         game.save = json.loads(f.read())
         f.close()
 
+def write_save_data(game):
+    f = open('save/save.txt', 'w')
+    f.write(json.dumps(game.save))
+    f.close()
+
 def erase_save_data(game):
-    pass
+    f = open('save/save.txt', 'w')
+    f.write(json.dumps(empty_save))
+    f.close()
+    f = open('save/save.txt', 'r')
+    game.save = json.loads(f.read())
+    f.close()

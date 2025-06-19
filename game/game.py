@@ -10,6 +10,14 @@ class Game():
         self.load_asset()
         self.save = {}
         load_save_data(self)
+
+        self.key_pressed = {
+            'up': False, 'left': False, 'down': False, 'right': False
+        }
+
+        self.key_binding = {
+            'up': pygame.K_w, 'left': pygame.K_a, 'down': pygame.K_s, 'right': pygame.K_d
+        }
         self.player = Player()
         self.field = Field()
         self.battle = Battle()
@@ -49,16 +57,22 @@ class Game():
 
             if event.type == pygame.KEYDOWN:
                 key = event.key
+                for k in self.key_pressed:
+                    if key == self.key_binding[k]:
+                        self.key_pressed[k] = True
                 if self.scene == 'title':
                     scenetitle.key_down(self, key)
-                elif self.sceme == 'game':
+                elif self.scene == 'game':
                     scenegame.key_down(self, key)
 
             if event.type == pygame.KEYUP:
                 key = event.key
+                for k in self.key_pressed:
+                    if key == self.key_binding[k]:
+                        self.key_pressed[k] = False
                 if self.scene == 'title':
                     scenetitle.key_up(self, key)
-                elif self.sceme == 'game':
+                elif self.scene == 'game':
                     scenegame.key_up(self, key)
 
     def handle_scene(self):

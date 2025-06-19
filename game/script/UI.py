@@ -10,12 +10,13 @@ class UI():
 
     class Game():
         button_menu = [1180, 20, 80, 80]
+        button_info = [1180, 620, 80, 80]
 
     class Battle():
         pass
 
     class Info():
-        pass
+        rect = [160, 40, 960, 640]
 
     class Shop():
         pass

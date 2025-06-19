@@ -2,15 +2,24 @@ import pygame, sys
 from script.module import *
 
 def loop(game):
+    if game.menu == False:
+        if game.state == '':
+            game.field.handle_tick(game)
+
     render(game)
 
 def render(game):
     game.surface.fill(Color.white)
     game.field.render(game.surface)
     pygame.draw.rect(game.surface, Color.black, UI.Game.button_menu, 2)
+    pygame.draw.rect(game.surface, Color.black, UI.Game.button_info, 2)
+
+    if game.state == 'info':
+        render_info(game.surface, game, game.player)
 
     if game.menu == True:
-        render_menu(game, game.surface)
+        render_menu(game.surface, game)
+
     pygame.display.flip()
 
 def mouse_up(game, pos, button):
@@ -28,9 +37,19 @@ def mouse_up(game, pos, button):
                 game.menu = False
                 game.scene = 'title'
                 game.state = ''
+                game.player.write_save(game.save)
+                game.field.write_save(game.save)
+                write_save_data(game)
 
 def key_down(game, key):
-    pass
+    if game.menu == False:
+        if game.state == '':
+            if key == pygame.K_r:
+                game.state = 'info'
+
+        elif game.state == 'info':
+            if key == pygame.K_r:
+                game.state = ''
 
 def key_up(game, key):
     pass

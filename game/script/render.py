@@ -5,7 +5,11 @@ def render_surface_camera(surface_target, surface, rect, camera):
     pos = [rect.position.x - rect.size.x / 2 - camera.position.x + camera.size.x / 2, rect.position.y - rect.size.y / 2 - camera.position.y + camera.size.y / 2]
     surface_target.blit(surface, pos)
 
-def render_menu(game, surface):
+def render_info(surface, game, player):
+    pygame.draw.rect(surface, Color.white, UI.Info.rect)
+    pygame.draw.rect(surface, Color.black, UI.Info.rect, 2)
+
+def render_menu(surface, game):
     pygame.draw.rect(surface, Color.white, UI.Menu.rect)
     pygame.draw.rect(surface, Color.black, UI.Menu.rect, 2)
 
