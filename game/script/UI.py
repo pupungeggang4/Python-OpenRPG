@@ -17,6 +17,20 @@ class UI():
 
     class Info():
         rect = [160, 40, 960, 640]
+        button_close = [1080, 40, 40, 40]
+        tab_profile = [160, 40, 200, 40]
+        icon_profile = [240, 40]
+        tab_inventory = [360, 40, 200, 40]
+        icon_inventory = [440, 40]
+        tab_deck = [560, 40, 200, 40]
+        icon_deck = [640, 40]
+        tab_map = [760, 40, 200, 40]
+        icon_map = [840, 40]
+
+        portrait = [80, 120, 160, 160]
+        
+        text_level = [44, 284]
+        text_exp = [44, 324]
 
     class Shop():
         pass

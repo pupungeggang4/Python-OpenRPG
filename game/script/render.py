@@ -8,6 +8,16 @@ def render_surface_camera(surface_target, surface, rect, camera):
 def render_info(surface, game, player):
     pygame.draw.rect(surface, Color.white, UI.Info.rect)
     pygame.draw.rect(surface, Color.black, UI.Info.rect, 2)
+    surface.blit(Image.button['close'], UI.Info.button_close)
+
+    pygame.draw.rect(surface, Color.black, UI.Info.tab_profile, 2)
+    surface.blit(Image.icon['profile'], UI.Info.icon_profile)
+    pygame.draw.rect(surface, Color.black, UI.Info.tab_inventory, 2)
+    surface.blit(Image.icon['inventory'], UI.Info.icon_inventory)
+    pygame.draw.rect(surface, Color.black, UI.Info.tab_deck, 2)
+    surface.blit(Image.icon['deck'], UI.Info.icon_deck)
+    pygame.draw.rect(surface, Color.black, UI.Info.tab_map, 2)
+    surface.blit(Image.icon['map'], UI.Info.icon_map)
 
 def render_menu(surface, game):
     pygame.draw.rect(surface, Color.white, UI.Menu.rect)

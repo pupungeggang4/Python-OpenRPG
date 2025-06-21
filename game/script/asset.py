@@ -1,3 +1,5 @@
+import pygame
+
 class Color():
     transparent = [0, 0, 0, 0]
     black = [0, 0, 0]
@@ -9,4 +11,18 @@ class Font():
     neodgm_32 = None
 
 class Image():
-    pass
+    button = {
+        'menu': pygame.image.load('image/button/ButtonMenu.png'),
+        'back': pygame.image.load('image/button/ButtonBack.png'),
+        'close': pygame.image.load('image/button/ButtonClose.png'),
+        'info': pygame.image.load('image/button/ButtonInfo.png'),
+        'prev': pygame.image.load('image/button/ButtonPrev.png'),
+        'next': pygame.image.load('image/button/ButtonNext.png'),
+    }
+
+    icon = {
+        'profile': pygame.image.load('image/icon/IconProfile.png'),
+        'inventory': pygame.image.load('image/icon/IconItem.png'),
+        'deck': pygame.image.load('image/icon/IconCard.png'),
+        'map': pygame.image.load('image/icon/IconMap.png'),
+    }
