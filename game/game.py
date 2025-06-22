@@ -25,7 +25,13 @@ class Game():
 
         self.scene = 'title'
         self.state = ''
+        self.state_field = ''
+        self.state_battle = ''
         self.menu = False
+        self.info_tab_player = 'profile'
+        self.info_player_profile_index = -1
+        self.info_card_page = 0
+
         self.FPS = 60
         self.clock = pygame.time.Clock()
         self.surface = pygame.display.set_mode([1280, 720], pygame.SCALED, vsync = 1)

@@ -32,6 +32,10 @@ class UI():
         text_level = [44, 284]
         text_exp = [44, 324]
 
+        text_weapon = []
+        text_equipment = []
+        text_item = []
+
     class Shop():
         pass
 
