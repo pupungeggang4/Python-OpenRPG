@@ -18,6 +18,7 @@ class Game():
         self.key_binding = {
             'up': pygame.K_w, 'left': pygame.K_a, 'down': pygame.K_s, 'right': pygame.K_d
         }
+
         self.player = Player()
         self.field = Field()
         self.battle = Battle()
@@ -25,12 +26,12 @@ class Game():
 
         self.scene = 'title'
         self.state = ''
-        self.state_field = ''
         self.state_battle = ''
         self.menu = False
+        self.info = False
         self.info_tab_player = 'profile'
         self.info_player_profile_index = -1
-        self.info_card_page = 0
+        self.info_deck_page = 0
 
         self.FPS = 60
         self.clock = pygame.time.Clock()

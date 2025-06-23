@@ -27,14 +27,29 @@ class UI():
         tab_map = [760, 40, 200, 40]
         icon_map = [840, 40]
 
-        portrait = [80, 120, 160, 160]
+        text_start = [164, 84]
+        portrait = [200, 120, 160, 160]
         
-        text_level = [44, 284]
-        text_exp = [44, 324]
+        text_level = [164, 284]
+        text_exp = [164, 324]
 
-        text_weapon = []
-        text_equipment = []
-        text_item = []
+        text_weapon = [444, 84]
+        weapon = [440, 160, 80, 80]
+        description_rect_profile = [760, 160, 320, 80]
+        text_equipment = [444, 284]
+        equipment_start = [440, 360]
+        equipment_rect = [80, 80, 80, 80]
+        text_item = [444, 484]
+        item_start = [440, 560]
+        item_rect = [80, 80, 80, 80]
+
+        button_prev = [180, 340, 40, 40]
+        button_next = [1060, 340, 40, 40]
+        description_rect_inventory = [240, 160, 800, 80]
+        inventory_start = [240, 240]
+        inventory_rect = [80, 80, 80, 80]
+        deck_start = [240, 120]
+        deck_rect = [200, 240, 200, 240]
 
     class Shop():
         pass

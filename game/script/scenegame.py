@@ -11,10 +11,10 @@ def loop(game):
 def render(game):
     game.surface.fill(Color.white)
     game.field.render(game.surface)
-    pygame.draw.rect(game.surface, Color.black, UI.Game.button_menu, 2)
-    pygame.draw.rect(game.surface, Color.black, UI.Game.button_info, 2)
+    game.surface.blit(Image.button['menu'], UI.Game.button_menu)
+    game.surface.blit(Image.button['info'], UI.Game.button_info)
 
-    if game.state == 'info':
+    if game.info == True:
         render_info(game.surface, game, game.player)
 
     if game.menu == True:
@@ -27,6 +27,30 @@ def mouse_up(game, pos, button):
         if game.menu == False:
             if point_inside_rect_ui(pos, UI.Game.button_menu):
                 game.menu = True
+
+            if game.info == False:
+                if point_inside_rect_ui(pos, UI.Game.button_info):
+                    game.info = True
+                    game.info_tab_player = 'profile'
+                    game.info_profile_index = -1
+                    game.info_deck_page = 0
+
+                if game.state == '':
+                    pass
+
+            elif game.info == True:
+                if point_inside_rect_ui(pos, UI.Game.button_info) or point_inside_rect_ui(pos, UI.Info.button_close):
+                    game.info = False
+                if point_inside_rect_ui(pos, UI.Info.tab_profile):
+                    game.info_tab_player = 'profile'
+                    game.info_profile_index = -1
+                elif point_inside_rect_ui(pos, UI.Info.tab_inventory):
+                    game.info_tab_player = 'inventory'
+                elif point_inside_rect_ui(pos, UI.Info.tab_deck):
+                    game.info_tab_player = 'deck'
+                    game.info_deck_page = 0
+                elif point_inside_rect_ui(pos, UI.Info.tab_map):
+                    game.info_tab_player = 'map'
 
         elif game.menu == True:
             if point_inside_rect_ui(pos, UI.Game.button_menu):
@@ -43,13 +67,15 @@ def mouse_up(game, pos, button):
 
 def key_down(game, key):
     if game.menu == False:
-        if game.state == '':
+        if game.info == False:
             if key == pygame.K_r:
-                game.state = 'info'
+                game.info = True
+            if game.state == '':
+                pass
 
-        elif game.state == 'info':
+        elif game.info == True:
             if key == pygame.K_r:
-                game.state = ''
+                game.info = False
 
 def key_up(game, key):
     pass

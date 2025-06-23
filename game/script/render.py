@@ -19,6 +19,45 @@ def render_info(surface, game, player):
     pygame.draw.rect(surface, Color.black, UI.Info.tab_map, 2)
     surface.blit(Image.icon['map'], UI.Info.icon_map)
 
+    if game.info_tab_player == 'profile':
+        surface.blit(Font.neodgm_32.render('Name', False, Color.black), UI.Info.text_start)
+        pygame.draw.rect(surface, Color.black, UI.Info.portrait, 2)
+        surface.blit(Font.neodgm_32.render(f'Lv.{player.player_level}', False, Color.black), UI.Info.text_level)
+        surface.blit(Font.neodgm_32.render(f'Exp.{player.player_exp}/{player.player_exp_max}', False, Color.black), UI.Info.text_exp)
+
+        pygame.draw.rect(surface, Color.black, UI.Info.description_rect_profile, 2)
+        surface.blit(Font.neodgm_32.render('Weapon', False, Color.black), UI.Info.text_weapon)
+        pygame.draw.rect(surface, Color.black, UI.Info.weapon, 2)
+        surface.blit(Font.neodgm_32.render('Equipment', False, Color.black), UI.Info.text_equipment)
+        for i in range(8):
+            rect = [UI.Info.equipment_start[0] + UI.Info.equipment_rect[0] * i, UI.Info.equipment_start[1], UI.Info.equipment_rect[2], UI.Info.equipment_rect[3]]
+            pygame.draw.rect(surface, Color.black, rect, 2)
+        surface.blit(Font.neodgm_32.render('Item', False, Color.black), UI.Info.text_item)
+        for i in range(8):
+            rect = [UI.Info.item_start[0] + UI.Info.item_rect[0] * i, UI.Info.item_start[1], UI.Info.item_rect[2], UI.Info.item_rect[3]]
+            pygame.draw.rect(surface, Color.black, rect, 2)
+    elif game.info_tab_player == 'inventory':
+        surface.blit(Font.neodgm_32.render('Inventory', False, Color.black), UI.Info.text_start)
+        pygame.draw.rect(surface, Color.black, UI.Info.description_rect_inventory, 2)
+        for i in range(40):
+            row = int(i / 10)
+            col = i - row * 10
+            rect = [UI.Info.inventory_start[0] + UI.Info.inventory_rect[0] * col, UI.Info.inventory_start[1] + UI.Info.inventory_rect[1] * row, UI.Info.inventory_rect[2], UI.Info.inventory_rect[3]]
+            pygame.draw.rect(surface, Color.black, rect, 2)
+        surface.blit(Image.button['prev'], UI.Info.button_prev)
+        surface.blit(Image.button['next'], UI.Info.button_next)
+    elif game.info_tab_player == 'deck':
+        surface.blit(Font.neodgm_32.render('Deck', False, Color.black), UI.Info.text_start)
+        for i in range(8):
+            row = int(i / 4)
+            col = i - row * 4
+            rect = [UI.Info.deck_start[0] + UI.Info.deck_rect[0] * col, UI.Info.deck_start[1] + UI.Info.deck_rect[1] * row, UI.Info.deck_rect[2], UI.Info.deck_rect[3]]
+            pygame.draw.rect(surface, Color.black, rect, 2)
+        surface.blit(Image.button['prev'], UI.Info.button_prev)
+        surface.blit(Image.button['next'], UI.Info.button_next)
+    elif game.info_tab_player == 'map':
+        surface.blit(Font.neodgm_32.render('Deck', False, Color.black), UI.Info.text_start)
+
 def render_menu(surface, game):
     pygame.draw.rect(surface, Color.white, UI.Menu.rect)
     pygame.draw.rect(surface, Color.black, UI.Menu.rect, 2)
