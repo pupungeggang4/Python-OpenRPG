@@ -58,6 +58,7 @@ class Game():
 
             if event.type == pygame.JOYDEVICEADDED:
                 joy = pygame.joystick.Joystick(event.device_index)
+                print(joy.get_name())
                 self.joysticks.append(joy)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -89,6 +90,8 @@ class Game():
                     scenegame.key_up(self, key)
 
             if event.type == pygame.JOYBUTTONDOWN:
+                print(event.button)
+            if event.type == pygame.JOYBUTTONUP:
                 print(event.button)
 
     def handle_scene(self):
