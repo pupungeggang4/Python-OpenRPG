@@ -7,7 +7,6 @@ class Game():
     def __init__(self):
         pygame.init()
         pygame.font.init()
-        pygame.joystick.init()
         self.load_asset()
         self.save = {}
         load_save_data(self)
@@ -19,7 +18,6 @@ class Game():
         self.key_binding = {
             'up': pygame.K_w, 'left': pygame.K_a, 'down': pygame.K_s, 'right': pygame.K_d
         }
-        self.joysticks = []
 
         self.player = Player()
         self.field = Field()
@@ -56,11 +54,6 @@ class Game():
                 pygame.quit()
                 sys.exit()
 
-            if event.type == pygame.JOYDEVICEADDED:
-                joy = pygame.joystick.Joystick(event.device_index)
-                print(joy.get_name())
-                self.joysticks.append(joy)
-
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse = pygame.mouse.get_pos()
                 button = event.button
@@ -88,11 +81,6 @@ class Game():
                     scenetitle.key_up(self, key)
                 elif self.scene == 'game':
                     scenegame.key_up(self, key)
-
-            if event.type == pygame.JOYBUTTONDOWN:
-                print(event.button)
-            if event.type == pygame.JOYBUTTONUP:
-                print(event.button)
 
     def handle_scene(self):
         if self.scene == 'title':
