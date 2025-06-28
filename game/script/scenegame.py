@@ -3,7 +3,7 @@ from script.module import *
 
 def loop(game):
     if game.menu == False:
-        if game.state == '':
+        if game.state == '' and game.info == False:
             game.field.handle_tick(game)
 
     render(game)

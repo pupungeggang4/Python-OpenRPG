@@ -8,6 +8,7 @@ from script.func import *
 from script.render import *
 
 from script.primitive import *
+from script.card import *
 from script.player import *
 from script.field import *
 from script.battle import *

@@ -32,6 +32,7 @@ class Game():
         self.info_tab_player = 'profile'
         self.info_player_profile_index = -1
         self.info_deck_page = 0
+        self.selected_deck = 0
 
         self.FPS = 60
         self.clock = pygame.time.Clock()
@@ -41,6 +42,7 @@ class Game():
     def load_asset(self):
         Font.neodgm_16 = pygame.font.Font('font/neodgm.ttf', 16)
         Font.neodgm_32 = pygame.font.Font('font/neodgm.ttf', 32)
+        Image.load_image(Image)
 
     def run(self):
         while True:

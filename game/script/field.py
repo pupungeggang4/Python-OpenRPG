@@ -8,6 +8,7 @@ class PlayerField():
 
     def handle_tick(self, game, field):
         self.move(game)
+        self.check_village(game)
 
     def move(self, game):
         if game.key_pressed['up'] == True:
@@ -18,6 +19,20 @@ class PlayerField():
             self.rect.position.y += 200.0 / game.FPS
         if game.key_pressed['right'] == True:
             self.rect.position.x += 200.0 / game.FPS
+
+    def check_village(self, game):
+        v = False
+        player = game.player
+        for i in range(len(village_zone)):
+            if self.rect.inside_rect(village_zone[i]):
+                v = True
+                break
+
+        if v == False and player.adventure_mode == False:
+            player.start_adventure(game)
+
+        elif v == True and player.adventure_mode == True:
+            player.end_adventure(game)
 
     def render(self, surface, camera):
         self.surface.fill(Color.transparent)

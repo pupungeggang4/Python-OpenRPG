@@ -37,3 +37,25 @@ class Image():
         pygame.image.load('image/deck/deckdark.png'),
         pygame.image.load('image/deck/deckspecial.png')
     ]
+
+    card = {
+    }
+
+    weapon = {
+    }
+
+    equipment = {
+    }
+
+    item = {
+    }
+
+    def load_image(self):
+        for i in range(1, 3):
+            self.card[i] = pygame.image.load(f'image/card/card{str(i).zfill(3)}.png')
+        for i in range(1, 2):
+            self.weapon[i] = pygame.image.load(f'image/weapon/weapon{str(i).zfill(3)}.png')
+        for i in range(1, 2):
+            self.equipment[i] = pygame.image.load(f'image/equipment/equipment{str(i).zfill(3)}.png')
+        for i in range(1, 2):
+            self.item[i] = pygame.image.load(f'image/item/item{str(i).zfill(3)}.png')

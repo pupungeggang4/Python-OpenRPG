@@ -28,14 +28,14 @@ data_item_d = {
 data_unit = {}
 data_unit_d = {}
 data_deck = {
-    1: {'ID': 1, 'name': 'normal deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2]},
-    2: {'ID': 2, 'name': 'fire deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2]},
-    3: {'ID': 3, 'name': 'water deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2]},
-    4: {'ID': 4, 'name': 'wind deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2]},
-    5: {'ID': 5, 'name': 'earth deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2]},
-    6: {'ID': 6, 'name': 'light deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2]},
-    7: {'ID': 7, 'name': 'dark deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2]},
-    8: {'ID': 8, 'name': 'special deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2]},
+    1: {'ID': 1, 'name': 'normal deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    2: {'ID': 2, 'name': 'fire deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    3: {'ID': 3, 'name': 'water deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    4: {'ID': 4, 'name': 'wind deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    5: {'ID': 5, 'name': 'earth deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    6: {'ID': 6, 'name': 'light deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    7: {'ID': 7, 'name': 'dark deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
+    8: {'ID': 8, 'name': 'special deck', 'card': [1, 1, 1, 1, 2, 2, 2, 2], 'weapon': 1, 'equipment': 1},
 }
 data_deck_d = {
     1: {'ID': 1, 'name': 'normal deck', 'description': ['Deck with normal cards.']},

@@ -27,14 +27,20 @@ def render_info(surface, game, player):
 
         pygame.draw.rect(surface, Color.black, UI.Info.description_rect_profile, 2)
         surface.blit(Font.neodgm_32.render('Weapon', False, Color.black), UI.Info.text_weapon)
+        if player.adventure_mode == True:
+            player.weapon.render(surface, UI.Info.weapon)
         pygame.draw.rect(surface, Color.black, UI.Info.weapon, 2)
         surface.blit(Font.neodgm_32.render('Equipment', False, Color.black), UI.Info.text_equipment)
         for i in range(8):
             rect = [UI.Info.equipment_start[0] + UI.Info.equipment_rect[0] * i, UI.Info.equipment_start[1], UI.Info.equipment_rect[2], UI.Info.equipment_rect[3]]
+            if i < len(player.equipment):
+                player.equipment[i].render(surface, rect)
             pygame.draw.rect(surface, Color.black, rect, 2)
         surface.blit(Font.neodgm_32.render('Item', False, Color.black), UI.Info.text_item)
         for i in range(8):
             rect = [UI.Info.item_start[0] + UI.Info.item_rect[0] * i, UI.Info.item_start[1], UI.Info.item_rect[2], UI.Info.item_rect[3]]
+            if i < len(player.item):
+                player.item[i].render(surface, rect)
             pygame.draw.rect(surface, Color.black, rect, 2)
     elif game.info_tab_player == 'inventory':
         surface.blit(Font.neodgm_32.render('Inventory', False, Color.black), UI.Info.text_start)
@@ -65,6 +71,14 @@ def render_info(surface, game, player):
                 surface.blit(Font.neodgm_16.render(data_deck[i + 1]['name'], False, Color.black), pos_text)
                 pos_start = [UI.Info.deck_text_start[0] + UI.Info.deck_rect[0] * col, UI.Info.deck_text_start[1] + UI.Info.deck_rect[1] * row]
                 render_text_box(surface, Font.neodgm_16, data_deck_d[i + 1]['description'], pos_start, UI.Info.deck_text_interval)
+        else:
+            for i in range(8):
+                row = int(i / 4)
+                col = i - row * 4
+                index = game.info_deck_page * 8 + i
+                pos = [UI.Info.deck_start[0] + UI.Info.deck_rect[0] * col, UI.Info.deck_start[1] + UI.Info.deck_rect[1] * row]
+                if index < len(player.deck):
+                    player.deck[i].render(surface, pos)
 
     elif game.info_tab_player == 'map':
         surface.blit(Font.neodgm_32.render('Deck', False, Color.black), UI.Info.text_start)

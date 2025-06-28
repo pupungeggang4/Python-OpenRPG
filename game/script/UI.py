@@ -64,6 +64,11 @@ class UI():
 
     class Card():
         size = [200, 240]
+        image = [20, 20, 160, 120]
+        text_energy = [4, 4]
+        text_name = [4, 142]
+        text_d_start = [4, 162]
+        text_d_interval = [0, 18]
 
     class Menu():
         rect = [320, 200, 640, 320]

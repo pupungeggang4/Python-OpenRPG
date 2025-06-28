@@ -9,7 +9,33 @@ class Player():
         self.adventure_mode = False
         self.inventory = []
         self.deck = []
-        self.weapon = []
+        self.weapon = None
+        self.equipment = []
+        self.item = []
+
+    def start_adventure(self, game):
+        print(1)
+        ID = game.selected_deck + 1
+        self.adventure_mode = True
+        self.weapon = Weapon()
+        self.weapon.set_data(data_deck[ID]['weapon'])
+        self.deck = []
+        for i in range(len(data_deck[ID]['card'])):
+            card = Card()
+            card.set_data(data_deck[ID]['card'][i])
+            self.deck.append(card)
+        equipment = Equipment()
+        equipment.set_data(data_deck[ID]['equipment'])
+        self.equipment.append(equipment)
+        item = Item()
+        item.set_data(1)
+        self.item.append(item)
+        
+    def end_adventure(self, game):
+        print(2)
+        self.adventure_mode = False
+        self.weapon = None
+        self.deck = []
         self.equipment = []
         self.item = []
 
@@ -36,7 +62,7 @@ class InventoryThing():
         self.rarity = ''
         self.effect = []
         self.description = []
-        self.surface = pygame.surface.Surface([80, 80])
+        self.surface = pygame.surface.Surface([80, 80], pygame.SRCALPHA)
 
     def set_data(self, d, dd):
         self.name = d['name']
@@ -56,8 +82,10 @@ class Weapon(InventoryThing):
         super().set_data(d, dd)
         self.energy = d['energy']
 
-    def render(self, surface):
-        pass
+    def render(self, surface, pos):
+        self.surface.fill(Color.transparent)
+        self.surface.blit(Image.weapon[self.ID], [0, 0])
+        surface.blit(self.surface, pos)
 
 class Equipment(InventoryThing):
     def __init__(self):
@@ -69,6 +97,11 @@ class Equipment(InventoryThing):
         self.ID = ID
         super().set_data(d, dd)
 
+    def render(self, surface, pos):
+        self.surface.fill(Color.transparent)
+        self.surface.blit(Image.equipment[self.ID], [0, 0])
+        surface.blit(self.surface, pos)
+
 class Item(InventoryThing):
     def __init__(self):
         super().__init__()
@@ -78,3 +111,8 @@ class Item(InventoryThing):
         dd = copy.deepcopy(data_item_d[ID])
         self.ID = ID
         super().set_data(d, dd)
+
+    def render(self, surface, pos):
+        self.surface.fill(Color.transparent)
+        self.surface.blit(Image.item[self.ID], [0, 0])
+        surface.blit(self.surface, pos)
