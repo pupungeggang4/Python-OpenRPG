@@ -1,4 +1,4 @@
-import pygame, json
+import pygame, copy
 from script.module import *
 
 class PlayerField():
@@ -40,8 +40,9 @@ class Field():
         self.camera.position.y = self.player.rect.position.y
 
     def load_save(self, save):
-        self.player.rect.position.x = save['position'][0]
-        self.player.rect.position.y = save['position'][1]
+        s = copy.deepcopy(save)
+        self.player.rect.position.x = s['position'][0]
+        self.player.rect.position.y = s['position'][1]
 
     def write_save(self, save):
         save['position'][0] = self.player.rect.position.x

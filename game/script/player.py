@@ -1,4 +1,4 @@
-import copy
+import copy, pygame
 from script.module import *
 
 class Player():
@@ -6,16 +6,27 @@ class Player():
         self.player_level = 1
         self.player_exp = 0
         self.player_exp_max = 0
+        self.adventure_mode = False
+        self.inventory = []
+        self.deck = []
+        self.weapon = []
+        self.equipment = []
+        self.item = []
 
     def load_save(self, save):
-        self.player_level = save['player_level']
-        self.player_exp = save['player_exp']
-        self.player_exp_max = save['player_exp_max']
+        s = copy.deepcopy(save)
+        self.player_level = s['player_level']
+        self.player_exp = s['player_exp']
+        self.player_exp_max = s['player_exp_max']
+        self.inventory = s['inventory']
+        self.adventure_mode = s['adventure_mode']
 
     def write_save(self, save):
         save['player_level'] = self.player_level
         save['player_exp'] = self.player_exp
         save['player_exp_max'] = self.player_exp_max
+        save['inventory'] = copy.deepcopy(self.inventory)
+        save['adventure_mode'] = self.adventure_mode
 
 class InventoryThing():
     def __init__(self):

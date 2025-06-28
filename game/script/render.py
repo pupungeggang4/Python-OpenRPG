@@ -55,8 +55,24 @@ def render_info(surface, game, player):
             pygame.draw.rect(surface, Color.black, rect, 2)
         surface.blit(Image.button['prev'], UI.Info.button_prev)
         surface.blit(Image.button['next'], UI.Info.button_next)
+        if player.adventure_mode == False:
+            for i in range(8):
+                row = int(i / 4)
+                col = i - row * 4
+                pos_image = [UI.Info.deck_image_start[0] + UI.Info.deck_rect[0] * col, UI.Info.deck_image_start[1] + UI.Info.deck_rect[1] * row]
+                surface.blit(Image.deck[i], pos_image)
+                pos_text = [UI.Info.deck_text_name[0] + UI.Info.deck_rect[0] * col, UI.Info.deck_text_name[1] + UI.Info.deck_rect[1] * row]
+                surface.blit(Font.neodgm_16.render(data_deck[i + 1]['name'], False, Color.black), pos_text)
+                pos_start = [UI.Info.deck_text_start[0] + UI.Info.deck_rect[0] * col, UI.Info.deck_text_start[1] + UI.Info.deck_rect[1] * row]
+                render_text_box(surface, Font.neodgm_16, data_deck_d[i + 1]['description'], pos_start, UI.Info.deck_text_interval)
+
     elif game.info_tab_player == 'map':
         surface.blit(Font.neodgm_32.render('Deck', False, Color.black), UI.Info.text_start)
+
+def render_text_box(surface, font, text_list, start, interval):
+    for i in range(len(text_list)):
+        pos = [start[0] + interval[0] * i, start[1] + interval[1] * i]
+        surface.blit(font.render(text_list[i], False, Color.black), pos)
 
 def render_menu(surface, game):
     pygame.draw.rect(surface, Color.white, UI.Menu.rect)

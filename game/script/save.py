@@ -1,10 +1,13 @@
 import json
 
 empty_save = {
+    'progress': [],
     'position': [0, 0],
     'player_level': 1,
     'player_exp': 0,
     'player_exp_max': 40,
+    'inventory': [],
+    'adventure_mode': False,
     'card': [],
     'weapon': [],
     'equipment': [],

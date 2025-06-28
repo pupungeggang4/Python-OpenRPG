@@ -48,8 +48,13 @@ class UI():
         description_rect_inventory = [240, 160, 800, 80]
         inventory_start = [240, 240]
         inventory_rect = [80, 80, 80, 80]
+
         deck_start = [240, 120]
         deck_rect = [200, 240, 200, 240]
+        deck_image_start = [300, 120]
+        deck_text_name = [244, 204]
+        deck_text_start = [244, 224]
+        deck_text_interval = [0, 18]
 
     class Shop():
         pass

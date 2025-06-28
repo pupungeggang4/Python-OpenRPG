@@ -26,3 +26,14 @@ class Image():
         'deck': pygame.image.load('image/icon/IconCard.png'),
         'map': pygame.image.load('image/icon/IconMap.png'),
     }
+
+    deck = [
+        pygame.image.load('image/deck/decknormal.png'),
+        pygame.image.load('image/deck/deckfire.png'),
+        pygame.image.load('image/deck/deckwater.png'),
+        pygame.image.load('image/deck/deckwind.png'),
+        pygame.image.load('image/deck/deckearth.png'),
+        pygame.image.load('image/deck/decklight.png'),
+        pygame.image.load('image/deck/deckdark.png'),
+        pygame.image.load('image/deck/deckspecial.png')
+    ]
