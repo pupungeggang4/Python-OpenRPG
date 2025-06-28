@@ -25,6 +25,7 @@ class InventoryThing():
         self.rarity = ''
         self.effect = []
         self.description = []
+        self.surface = pygame.surface.Surface([80, 80])
 
     def set_data(self, d, dd):
         self.name = d['name']
@@ -43,6 +44,9 @@ class Weapon(InventoryThing):
         self.ID = ID
         super().set_data(d, dd)
         self.energy = d['energy']
+
+    def render(self, surface):
+        pass
 
 class Equipment(InventoryThing):
     def __init__(self):

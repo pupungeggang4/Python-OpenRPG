@@ -1,5 +1,6 @@
 from script.asset import *
 from script.data import *
+from script.world import *
 from script.UI import *
 
 from script.save import *

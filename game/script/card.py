@@ -1,4 +1,4 @@
-import copy
+import pygame, copy
 from script.module import *
 
 class Card():
@@ -11,6 +11,8 @@ class Card():
         self.energy = 0
         self.effect = []
         self.description = []
+
+        self.surface = pygame.surface.Surface(UI.Card.size)
 
     def set_data(self, ID):
         data_c = copy.deepcopy(data_card[ID])

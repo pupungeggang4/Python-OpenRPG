@@ -57,6 +57,9 @@ class UI():
     class Reward():
         pass
 
+    class Card():
+        size = [200, 240]
+
     class Menu():
         rect = [320, 200, 640, 320]
         text_paused = [344, 224]
