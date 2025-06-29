@@ -27,7 +27,7 @@ def render_info(surface, game, player):
 
         pygame.draw.rect(surface, Color.black, UI.Info.description_rect_profile, 2)
         surface.blit(Font.neodgm_32.render('Weapon', False, Color.black), UI.Info.text_weapon)
-        if player.adventure_mode == True:
+        if player.weapon.ID != 0:
             player.weapon.render(surface, UI.Info.weapon)
         pygame.draw.rect(surface, Color.black, UI.Info.weapon, 2)
         surface.blit(Font.neodgm_32.render('Equipment', False, Color.black), UI.Info.text_equipment)

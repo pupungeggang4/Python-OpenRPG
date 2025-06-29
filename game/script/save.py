@@ -6,10 +6,10 @@ empty_save = {
     'player_level': 1,
     'player_exp': 0,
     'player_exp_max': 40,
-    'inventory': [],
     'adventure_mode': False,
-    'card': [],
-    'weapon': [],
+    'inventory': [],
+    'deck': [],
+    'weapon': 0,
     'equipment': [],
     'item': []
 }

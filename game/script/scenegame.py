@@ -61,9 +61,10 @@ def mouse_up(game, pos, button):
                 game.menu = False
                 game.scene = 'title'
                 game.state = ''
-                game.player.write_save(game.save)
-                game.field.write_save(game.save)
-                write_save_data(game)
+                if game.state == '':
+                    game.player.write_save(game.save)
+                    game.field.write_save(game.save)
+                    write_save_data(game)
 
 def key_down(game, key):
     if game.menu == False:

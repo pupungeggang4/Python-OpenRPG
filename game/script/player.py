@@ -9,12 +9,11 @@ class Player():
         self.adventure_mode = False
         self.inventory = []
         self.deck = []
-        self.weapon = None
+        self.weapon = Weapon()
         self.equipment = []
         self.item = []
 
     def start_adventure(self, game):
-        print(1)
         ID = game.selected_deck + 1
         self.adventure_mode = True
         self.weapon = Weapon()
@@ -32,9 +31,8 @@ class Player():
         self.item.append(item)
         
     def end_adventure(self, game):
-        print(2)
         self.adventure_mode = False
-        self.weapon = None
+        self.weapon = Weapon()
         self.deck = []
         self.equipment = []
         self.item = []
@@ -44,15 +42,50 @@ class Player():
         self.player_level = s['player_level']
         self.player_exp = s['player_exp']
         self.player_exp_max = s['player_exp_max']
-        self.inventory = s['inventory']
         self.adventure_mode = s['adventure_mode']
+        self.inventory = []
+        for i in range(len(s['inventory'])):
+            inventory = InventoryItem()
+            self.inventory.append(inventory)
+        self.deck = []
+        for i in range(len(s['deck'])):
+            card = Card()
+            card.set_data(s['deck'][i])
+            self.deck.append(card)
+        self.weapon.set_data(s['weapon'])
+        self.equipment = []
+        for i in range(len(s['equipment'])):
+            equipment = Equipment()
+            equipment.set_data(s['equipment'][i])
+            self.equipment.append(equipment)
+        self.item = []
+        for i in range(len(s['item'])):
+            item = Item()
+            item.set_data(s['item'][i])
+            self.item.append(item)
 
     def write_save(self, save):
         save['player_level'] = self.player_level
         save['player_exp'] = self.player_exp
         save['player_exp_max'] = self.player_exp_max
-        save['inventory'] = copy.deepcopy(self.inventory)
         save['adventure_mode'] = self.adventure_mode
+        save['inventory'] = []
+        for i in range(self.inventory):
+            ID = self.inventory[i].ID
+            save['inventory'].append(ID)
+        save['deck'] = []
+        for i in range(self.deck):
+            ID = self.deck[i].ID
+            save['deck'].append(ID)
+        save['weapon'] = self.weapon.ID
+        save['equipment'] = []
+        for i in range(self.equipment):
+            ID = self.equipment[i].ID
+            save['equipment'].append(ID)
+        save['item'] = []
+        for i in range(self.item):
+            ID = self.item[i].ID
+            save['item'].append(ID)
 
 class InventoryThing():
     def __init__(self):
@@ -71,16 +104,21 @@ class InventoryThing():
         self.effect = d['effect']
         self.description = dd['description']
 
+class InventoryItem():
+    def __init__(self):
+        self.ID = 0
+
 class Weapon(InventoryThing):
     def __init__(self):
         super().__init__()
 
     def set_data(self, ID):
-        d = copy.deepcopy(data_weapon[ID])
-        dd = copy.deepcopy(data_weapon_d[ID])
         self.ID = ID
-        super().set_data(d, dd)
-        self.energy = d['energy']
+        if ID != 0:
+            d = copy.deepcopy(data_weapon[ID])
+            dd = copy.deepcopy(data_weapon_d[ID])
+            super().set_data(d, dd)
+            self.energy = d['energy']
 
     def render(self, surface, pos):
         self.surface.fill(Color.transparent)
