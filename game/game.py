@@ -2,6 +2,7 @@ import pygame, sys
 from script.module import *
 import script.scenetitle as scenetitle
 import script.scenegame as scenegame
+import script.scenebattle as scenebattle
 
 class Game():
     def __init__(self):
@@ -30,7 +31,7 @@ class Game():
         self.menu = False
         self.info = False
         self.info_tab_player = 'profile'
-        self.info_player_profile_index = -1
+        self.info_profile_index = -1
         self.info_deck_page = 0
         self.selected_deck = 0
 
@@ -63,6 +64,8 @@ class Game():
                     scenetitle.mouse_up(self, mouse, button)
                 elif self.scene == 'game':
                     scenegame.mouse_up(self, mouse, button)
+                elif self.scene == 'battle':
+                    scenebattle.mouse_up(self, mouse, button)
 
             if event.type == pygame.KEYDOWN:
                 key = event.key
@@ -73,6 +76,8 @@ class Game():
                     scenetitle.key_down(self, key)
                 elif self.scene == 'game':
                     scenegame.key_down(self, key)
+                elif self.scene == 'battle':
+                    scenebattle.key_down(self, mouse, button)
 
             if event.type == pygame.KEYUP:
                 key = event.key
@@ -83,6 +88,8 @@ class Game():
                     scenetitle.key_up(self, key)
                 elif self.scene == 'game':
                     scenegame.key_up(self, key)
+                elif self.scene == 'battle':
+                    scenebattle.key_up(self, mouse, button)
 
     def handle_scene(self):
         if self.scene == 'title':

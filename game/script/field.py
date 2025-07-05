@@ -43,8 +43,9 @@ class Field():
     def __init__(self):
         self.place = ''
         self.player = PlayerField()
-        self.thing = []
-        self.monster = []
+        self.thing_list = []
+        self.monster_list = [FieldMonster()]
+        self.monster_list[0].rect.position = Vector2(0, 480)
 
         self.camera = Rect2(0, 0, 1280, 720)
         self.surface = pygame.surface.Surface([1280, 720])
@@ -65,6 +66,8 @@ class Field():
 
     def render(self, surface):
         self.surface.fill(Color.white)
+        for i in range(len(self.monster_list)):
+            self.monster_list[i].render(self.surface, self.camera)
         self.player.render(self.surface, self.camera)
         surface.blit(self.surface, [0, 0])
 
@@ -72,10 +75,20 @@ class FieldThing():
     def __init__(self):
         self.type = ''
         self.rect = Rect2(0, 0, 80, 80)
-        self.surface = pygame.surface.Surface([self.rect.size.x, self.rect.size.y])
+        self.surface = pygame.surface.Surface([self.rect.size.x, self.rect.size.y], pygame.SRCALPHA)
+
+class FieldWall(FieldThing):
+    pass
 
 class FieldMonster(FieldThing):
-    pass
+    def __init__(self):
+        super().__init__()
+        self.type = 'monster'
+
+    def render(self, surface, camera):
+        self.surface.fill(Color.transparent)
+        pygame.draw.rect(self.surface, Color.black, [0, 0, self.rect.size.x, self.rect.size.y], 2)
+        render_surface_camera(surface, self.surface, self.rect, camera)
 
 class FieldEvent(FieldThing):
     pass

@@ -52,6 +52,9 @@ def mouse_up(game, pos, button):
                 elif point_inside_rect_ui(pos, UI.Info.tab_map):
                     game.info_tab_player = 'map'
 
+                if game.info_tab_player == 'profile':
+                    click_info_profile(game, pos)
+
         elif game.menu == True:
             if point_inside_rect_ui(pos, UI.Game.button_menu):
                 game.menu = False
@@ -65,6 +68,9 @@ def mouse_up(game, pos, button):
                     game.player.write_save(game.save)
                     game.field.write_save(game.save)
                     write_save_data(game)
+
+def click_info_profile(game, pos):
+    pass
 
 def key_down(game, key):
     if game.menu == False:
