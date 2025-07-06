@@ -12,19 +12,19 @@ class Font():
 
 class Image():
     button = {
-        'menu': pygame.image.load('image/button/ButtonMenu.png'),
-        'back': pygame.image.load('image/button/ButtonBack.png'),
-        'close': pygame.image.load('image/button/ButtonClose.png'),
-        'info': pygame.image.load('image/button/ButtonInfo.png'),
-        'prev': pygame.image.load('image/button/ButtonPrev.png'),
-        'next': pygame.image.load('image/button/ButtonNext.png'),
+        'menu': pygame.image.load('image/button/buttonmenu.png'),
+        'back': pygame.image.load('image/button/buttonback.png'),
+        'close': pygame.image.load('image/button/buttonclose.png'),
+        'info': pygame.image.load('image/button/buttoninfo.png'),
+        'prev': pygame.image.load('image/button/buttonprev.png'),
+        'next': pygame.image.load('image/button/buttonnext.png'),
     }
 
     icon = {
-        'profile': pygame.image.load('image/icon/IconProfile.png'),
-        'inventory': pygame.image.load('image/icon/IconItem.png'),
-        'deck': pygame.image.load('image/icon/IconCard.png'),
-        'map': pygame.image.load('image/icon/IconMap.png'),
+        'profile': pygame.image.load('image/icon/iconprofile.png'),
+        'inventory': pygame.image.load('image/icon/iconitem.png'),
+        'deck': pygame.image.load('image/icon/iconcard.png'),
+        'map': pygame.image.load('image/icon/iconmap.png'),
     }
 
     deck = [
@@ -49,6 +49,15 @@ class Image():
 
     item = {
     }
+
+    field = {
+        'monster': pygame.image.load('image/field/monster.png')
+    }
+
+    m = pygame.image.load('image/map.png')
+    player = pygame.image.load('image/player.png')
+    player_profile = pygame.image.load('image/playerprofile.png')
+    select_frame_80 = pygame.image.load('image/selectframe80.png')
 
     def load_image(self):
         for i in range(1, 3):

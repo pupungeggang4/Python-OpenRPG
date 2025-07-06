@@ -36,12 +36,15 @@ class UI():
         text_weapon = [444, 84]
         weapon = [440, 160, 80, 80]
         description_rect_profile = [760, 160, 320, 80]
+        description_text_name = [764, 162]
+        description_text_start = [764, 182]
+        description_text_interval = [0, 20]
         text_equipment = [444, 284]
         equipment_start = [440, 360]
-        equipment_rect = [80, 80, 80, 80]
+        equipment_rect = [80, 0, 80, 80]
         text_item = [444, 484]
         item_start = [440, 560]
-        item_rect = [80, 80, 80, 80]
+        item_rect = [80, 0, 80, 80]
 
         button_prev = [180, 340, 40, 40]
         button_next = [1060, 340, 40, 40]
@@ -55,6 +58,8 @@ class UI():
         deck_text_name = [244, 204]
         deck_text_start = [244, 224]
         deck_text_interval = [0, 18]
+
+        map_image = [400, 120]
 
     class Shop():
         pass

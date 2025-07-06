@@ -17,7 +17,7 @@ data_equipment = {
     1: {'ID': 1, 'name': 'small shield', 'element': 'normal', 'rarity': 'basic', 'effect': []}
 }
 data_equipment_d = {
-    1: {'ID': 1, 'name': 'small shield', 'description': ['Start of game', 'Gain +5 max HP.']}
+    1: {'ID': 1, 'name': 'small shield', 'description': ['Start of game: Gain +5 max HP.']}
 }
 data_item = {
     1: {'ID': 1, 'name': 'heal potion', 'element': 'normal', 'rarity': 'basic', 'effect': []}

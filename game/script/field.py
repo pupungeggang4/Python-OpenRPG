@@ -36,7 +36,7 @@ class PlayerField():
 
     def render(self, surface, camera):
         self.surface.fill(Color.transparent)
-        pygame.draw.rect(self.surface, Color.black, [0, 0, 80, 80], 2)
+        self.surface.blit(Image.player, [0, 0])
         render_surface_camera(surface, self.surface, self.rect, camera)
 
 class Field():
@@ -87,7 +87,7 @@ class FieldMonster(FieldThing):
 
     def render(self, surface, camera):
         self.surface.fill(Color.transparent)
-        pygame.draw.rect(self.surface, Color.black, [0, 0, self.rect.size.x, self.rect.size.y], 2)
+        self.surface.blit(Image.field['monster'], [0, 0])
         render_surface_camera(surface, self.surface, self.rect, camera)
 
 class FieldEvent(FieldThing):

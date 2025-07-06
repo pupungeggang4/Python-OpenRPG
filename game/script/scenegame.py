@@ -70,7 +70,16 @@ def mouse_up(game, pos, button):
                     write_save_data(game)
 
 def click_info_profile(game, pos):
-    pass
+    if point_inside_rect_ui(pos, UI.Info.weapon):
+        game.info_profile_index = -1
+    for i in range(8):
+        rect = [UI.Info.equipment_start[0] + UI.Info.equipment_rect[0] * i, UI.Info.equipment_start[1] + UI.Info.equipment_rect[1] * i, UI.Info.equipment_rect[2], UI.Info.equipment_rect[3]]
+        if point_inside_rect_ui(pos, rect):
+            game.info_profile_index = i
+    for i in range(8):
+        rect = [UI.Info.item_start[0] + UI.Info.item_rect[0] * i, UI.Info.item_start[1] + UI.Info.item_rect[1] * i, UI.Info.item_rect[2], UI.Info.item_rect[3]]
+        if point_inside_rect_ui(pos, rect):
+            game.info_profile_index = i + 8
 
 def key_down(game, key):
     if game.menu == False:

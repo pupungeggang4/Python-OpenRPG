@@ -26,22 +26,45 @@ def render_info(surface, game, player):
         surface.blit(Font.neodgm_32.render(f'Exp.{player.player_exp}/{player.player_exp_max}', False, Color.black), UI.Info.text_exp)
 
         pygame.draw.rect(surface, Color.black, UI.Info.description_rect_profile, 2)
+        surface.blit(Image.player_profile, UI.Info.portrait)
+
         surface.blit(Font.neodgm_32.render('Weapon', False, Color.black), UI.Info.text_weapon)
         if player.weapon.ID != 0:
             player.weapon.render(surface, UI.Info.weapon)
         pygame.draw.rect(surface, Color.black, UI.Info.weapon, 2)
         surface.blit(Font.neodgm_32.render('Equipment', False, Color.black), UI.Info.text_equipment)
         for i in range(8):
-            rect = [UI.Info.equipment_start[0] + UI.Info.equipment_rect[0] * i, UI.Info.equipment_start[1], UI.Info.equipment_rect[2], UI.Info.equipment_rect[3]]
+            rect = [UI.Info.equipment_start[0] + UI.Info.equipment_rect[0] * i, UI.Info.equipment_start[1] + UI.Info.item_rect[1] * i, UI.Info.equipment_rect[2], UI.Info.equipment_rect[3]]
             if i < len(player.equipment):
                 player.equipment[i].render(surface, rect)
+            if i == game.info_profile_index:
+                surface.blit(Image.select_frame_80, rect)
             pygame.draw.rect(surface, Color.black, rect, 2)
         surface.blit(Font.neodgm_32.render('Item', False, Color.black), UI.Info.text_item)
         for i in range(8):
-            rect = [UI.Info.item_start[0] + UI.Info.item_rect[0] * i, UI.Info.item_start[1], UI.Info.item_rect[2], UI.Info.item_rect[3]]
+            rect = [UI.Info.item_start[0] + UI.Info.item_rect[0] * i, UI.Info.item_start[1] + UI.Info.item_rect[1] * i, UI.Info.item_rect[2], UI.Info.item_rect[3]]
             if i < len(player.item):
                 player.item[i].render(surface, rect)
+            if i == game.info_profile_index - 8:
+                surface.blit(Image.select_frame_80, rect)
             pygame.draw.rect(surface, Color.black, rect, 2)
+
+        if game.info_profile_index == -1:
+            if player.weapon.ID != 0:
+                surface.blit(Image.select_frame_80, UI.Info.weapon)
+                surface.blit(Font.neodgm_16.render(player.weapon.name, False, Color.black), UI.Info.description_text_name)
+                render_text_box(surface, Font.neodgm_16, player.weapon.description, UI.Info.description_text_start, UI.Info.description_text_interval)
+        elif game.info_profile_index >= 0 and game.info_profile_index < 8:
+            i = game.info_profile_index
+            if i < len(player.equipment):
+                surface.blit(Font.neodgm_16.render(player.equipment[i].name, False, Color.black), UI.Info.description_text_name)
+                render_text_box(surface, Font.neodgm_16, player.equipment[i].description, UI.Info.description_text_start, UI.Info.description_text_interval)
+        else:
+            i = game.info_profile_index - 8
+            if i < len(player.item):
+                surface.blit(Font.neodgm_16.render(player.item[i].name, False, Color.black), UI.Info.description_text_name)
+                render_text_box(surface, Font.neodgm_16, player.item[i].description, UI.Info.description_text_start, UI.Info.description_text_interval)
+            
     elif game.info_tab_player == 'inventory':
         surface.blit(Font.neodgm_32.render('Inventory', False, Color.black), UI.Info.text_start)
         pygame.draw.rect(surface, Color.black, UI.Info.description_rect_inventory, 2)
@@ -52,6 +75,7 @@ def render_info(surface, game, player):
             pygame.draw.rect(surface, Color.black, rect, 2)
         surface.blit(Image.button['prev'], UI.Info.button_prev)
         surface.blit(Image.button['next'], UI.Info.button_next)
+
     elif game.info_tab_player == 'deck':
         surface.blit(Font.neodgm_32.render('Deck', False, Color.black), UI.Info.text_start)
         for i in range(8):
@@ -81,7 +105,8 @@ def render_info(surface, game, player):
                     player.deck[i].render(surface, pos)
 
     elif game.info_tab_player == 'map':
-        surface.blit(Font.neodgm_32.render('Deck', False, Color.black), UI.Info.text_start)
+        surface.blit(Font.neodgm_32.render('Map', False, Color.black), UI.Info.text_start)
+        surface.blit(Image.m, UI.Info.map_image)
 
 def render_text_box(surface, font, text_list, start, interval):
     for i in range(len(text_list)):
