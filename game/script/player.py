@@ -1,4 +1,3 @@
-import copy, pygame
 from script.module import *
 
 class Player():

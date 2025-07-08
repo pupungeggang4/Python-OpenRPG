@@ -1,4 +1,3 @@
-import pygame, copy
 from script.module import *
 
 class Card():

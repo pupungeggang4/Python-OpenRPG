@@ -1,4 +1,3 @@
-import pygame
 from script.module import *
 
 def render_surface_camera(surface_target, surface, rect, camera):

@@ -1,4 +1,3 @@
-import pygame, sys
 from script.module import *
 
 def loop(game):

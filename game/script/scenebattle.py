@@ -1,3 +1,5 @@
+from script.module import *
+
 def loop(game):
     render(game)
 

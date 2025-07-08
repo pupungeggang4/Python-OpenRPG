@@ -1,3 +1,5 @@
+import sys, pygame, json, copy
+
 from script.asset import *
 from script.data import *
 from script.world import *

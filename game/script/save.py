@@ -1,4 +1,4 @@
-import json
+from script.module import *
 
 empty_save = {
     'progress': [],

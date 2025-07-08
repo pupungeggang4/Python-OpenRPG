@@ -1,4 +1,4 @@
-import pygame
+from script.module import *
 
 class Color():
     transparent = [0, 0, 0, 0]
